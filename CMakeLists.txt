@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.1)
 
-add_library(imgui
+# Note: this project is supposed to create a static library, i.e. a collection of .o/.obj files
+#       we delegated external dependencies to the project that uses this library.
+#       User of this library is supposed to 
+#       1. Find the include dir of glad, and link to it:w
+#       2. Find the include dir of glfw, and link to it:w
+
+add_library(imgui STATIC
 		../imgui/imgui.cpp
 		../imgui/imgui.h
 		../imgui/imgui_demo.cpp
@@ -20,4 +26,4 @@ target_include_directories(imgui PRIVATE ../imgui)
 target_include_directories(imgui PUBLIC . .. ../imgui/examples)
 target_compile_definitions(imgui PUBLIC -DIMGUI_IMPL_OPENGL_LOADER_GLAD)
 
-target_link_libraries(imgui PRIVATE glad glfw)
+# target_link_libraries(imgui PRIVATE glad glfw)
