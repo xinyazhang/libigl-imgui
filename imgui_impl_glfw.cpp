@@ -177,6 +177,9 @@ static bool ImGui_ImplGlfw_Init(GLFWwindow* window, bool install_callbacks, Glfw
 {
     ImGuiIO& io = ImGui::GetIO();
     ImGui_ImplGlfw_Data* impl = ImGui_ImplGlfw_GetCurrentBindingData();
+    if (!impl)
+           impl = ImGui_ImplGlfw_CreateBindingData();
+
 
     impl->Window = window;
     impl->Time = 0.0;
